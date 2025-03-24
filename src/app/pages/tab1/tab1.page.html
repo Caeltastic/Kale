@@ -19,7 +19,7 @@
       <ion-button (click)="openAddCategoryModal()">Add Category</ion-button>
     </ion-item>
 
-    <div>
-      <app-category-list></app-category-list>
+    <div *ngFor="let category of categories">
+      <app-category-list [category]="category"></app-category-list>
     </div>
 </ion-content>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Category } from '../../models/category.model.';
 
 @Component({
   selector: 'app-add-category-modal',
@@ -10,6 +11,11 @@ import { ModalController } from '@ionic/angular';
 export class AddCategoryModalComponent  implements OnInit {
 
   categoryName: string = '';
+  category: Category = {
+    id: Date.now().toString(),
+    name: '',
+    ingredients: []
+  };
 
   constructor(private modalController: ModalController) {}
 
@@ -20,7 +26,10 @@ export class AddCategoryModalComponent  implements OnInit {
   }
 
   submit() {
-    console.log('New Category:', this.categoryName);
-    this.modalController.dismiss({ category: this.categoryName });
+    console.log('New Category:', this.categoryName)
+    
+    this.category.name = this.categoryName
+
+    this.modalController.dismiss({ category: this.category });
   }
 }
