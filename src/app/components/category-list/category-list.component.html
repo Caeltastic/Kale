@@ -1,8 +1,12 @@
 <div class="container">
-  
-  <div class="ingredient-list-container">
-    <ion-list id="ingredientList">
-      <ion-item *ngFor="let ingredient of ingredients">{{ ingredient }}</ion-item>
-    </ion-list>
+  <div class="category-box">
+    <h3 class="category-title">{{ category.name }}</h3>
+    <div class="ingredient-list-container">
+      <ion-list>
+        <ion-item *ngFor="let ingredient of category.ingredients">
+          {{ ingredient }}
+        </ion-item>
+      </ion-list>
+    </div>
   </div>
 </div>

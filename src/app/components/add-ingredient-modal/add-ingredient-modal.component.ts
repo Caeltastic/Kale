@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Category } from 'src/app/models/category.model.';
 
 @Component({
   selector: 'app-add-ingredient-modal',
@@ -11,10 +12,9 @@ export class AddIngredientModalComponent  implements OnInit {
 
   ngOnInit() {}
 
+  @Input() categories!: Category[];
+  selectedCategory: Category | null = null;
   ingredientName: string = '';
-  selectedCategory: string = '';
-  categories: string[] = ['Dairy', 'Fruits', 'Vegetables', 'Spices'];
-
   constructor(private modalController: ModalController) {}
 
   close() {
@@ -23,7 +23,10 @@ export class AddIngredientModalComponent  implements OnInit {
 
   submit() {
     console.log('New Ingredient:', this.ingredientName, 'Category:', this.selectedCategory);
-    this.modalController.dismiss({ ingredient: this.ingredientName, category: this.selectedCategory });
+
+    this.selectedCategory?.ingredients.push(this.ingredientName)
+
+    this.modalController.dismiss({ category: this.selectedCategory });
   }
 
 }
