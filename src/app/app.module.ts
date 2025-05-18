@@ -20,8 +20,6 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule,
     ZXingScannerModule
   ],
   providers: [{ 

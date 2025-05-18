@@ -12,18 +12,8 @@ const redirectLoggedInToTabs = () => redirectLoggedInTo(['tabs/tab1']);
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule),
-    ...canActivate(redirectLoggedInToTabs)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
-  },
-  {
     path: 'tabs',
-    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule),
-    ...canActivate(redirectUnauthorizedToLogin)
+    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
     path: '**',
