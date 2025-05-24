@@ -11,12 +11,29 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { AddCategoryModalComponent } from './add-category-modal/add-category-modal.component';
 import { AddIngredientModalComponent } from './add-ingredient-modal/add-ingredient-modal.component';
 import { BarcodeScannerComponent } from './barcode-scanner/barcode-scanner.component';
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
-
+import { NgxScannerQrcodeComponent } from 'ngx-scanner-qrcode';
 
 @NgModule({
-  imports: [ CommonModule, FormsModule, IonicModule, ZXingScannerModule],
-  declarations: [ExploreContainerComponent, CategoryListComponent, AddCategoryModalComponent, AddIngredientModalComponent, BarcodeScannerComponent],
-  exports: [ExploreContainerComponent, CategoryListComponent, AddCategoryModalComponent, AddIngredientModalComponent, BarcodeScannerComponent]
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    NgxScannerQrcodeComponent
+  ],
+  declarations: [
+    ExploreContainerComponent,
+    CategoryListComponent,
+    AddCategoryModalComponent,
+    AddIngredientModalComponent,
+    BarcodeScannerComponent
+  ],
+  exports: [
+    ExploreContainerComponent,
+    CategoryListComponent,
+    AddCategoryModalComponent,
+    AddIngredientModalComponent,
+    BarcodeScannerComponent,
+    NgxScannerQrcodeComponent
+  ]
 })
 export class ComponentsModule {}

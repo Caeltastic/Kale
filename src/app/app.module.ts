@@ -15,12 +15,10 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore'
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    ZXingScannerModule
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule
   ],
   providers: [{ 
     provide: RouteReuseStrategy, 

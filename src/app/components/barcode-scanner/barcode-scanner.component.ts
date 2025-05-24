@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BarcodeFormat } from '@zxing/library';
 
 @Component({
   selector: 'app-barcode-scanner',
@@ -10,8 +9,6 @@ import { BarcodeFormat } from '@zxing/library';
 export class BarcodeScannerComponent {
 
   constructor() {}
-
-  formatsEnabled = [BarcodeFormat.EAN_13, BarcodeFormat.UPC_A];
 
   onCodeResult(result: string): void {
     console.log('Scanned result:', result);
