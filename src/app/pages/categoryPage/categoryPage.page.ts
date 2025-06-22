@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AddCategoryModalComponent } from '../../components/add-category-modal/add-category-modal.component';
 import { AddIngredientModalComponent } from '../../components/add-ingredient-modal/add-ingredient-modal.component';
 import { Category } from 'src/app/models/category.model.';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { IngredientsService } from 'src/app/services/ingredients.service';
+import { Ingredient } from 'src/app/models/ingredient.model';
 
 @Component({
   selector: 'app-CategoryPage',
@@ -12,18 +14,28 @@ import { Router } from '@angular/router';
   styleUrls: ['categoryPage.page.scss'],
   standalone: false,
 })
-export class CategoryPage {
+export class CategoryPage implements OnInit {
   categories: Category[] = [];
+  ingredients: Ingredient[] = [];
+  ingredientsByCategory: Record<string, Ingredient[]> = {};
 
   constructor(
     private modalController: ModalController,
     private authService: AuthService,
-    private router: Router) {}
+    private router: Router,
+    private ingredientService: IngredientsService) {}
+
+  ngOnInit(): void {
+    this.ingredientService.fetchAllIngredients().subscribe(() => {
+      const ingredients = this.ingredientService.getLocalIngredients();
+      this.ingredientsByCategory = this.ingredientService.groupByCategoryName(ingredients);
+    });
+
+  }
 
   async logout(){
     await this.authService.logout();
     this.router.navigateByUrl('/', {replaceUrl: true})
-
   }
 
   async changeImage(){
